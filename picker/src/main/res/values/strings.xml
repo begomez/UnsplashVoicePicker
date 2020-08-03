@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_label">UnsplashVPicker</string>
+    <string name="search_hint">Search ingredients</string>
+    <string name="search_title">Search</string>
+    <string name="msg_search_no_results">No results found</string>
+</resources>

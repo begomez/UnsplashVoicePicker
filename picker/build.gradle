@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def globalDepens = rootProject.ext.globalDepens
+    def appDepens = rootProject.ext.appDepens
+    def presenDepens = rootProject.ext.presenDepens
+    def remoteDepens = rootProject.ext.remoteDepens
+
+    implementation globalDepens.kotlinStd
+    implementation globalDepens.kotlinCore
+    implementation globalDepens.inject
+
+    implementation appDepens.appCompat
+    implementation appDepens.constraint
+
+    implementation appDepens.recycler
+    implementation appDepens.picasso
+
+    api presenDepens.life
+    api presenDepens.lifeVm
+
+    api remoteDepens.corou
+    implementation remoteDepens.retrofit
+    implementation remoteDepens.gson
+    implementation remoteDepens.gsonConverter
+    implementation remoteDepens.interceptor
+    implementation remoteDepens.okhttp
+}

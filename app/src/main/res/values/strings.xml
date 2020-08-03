@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">UnsplashVPicker Client</string>
+    <string name="action_click">Pick image</string>
+</resources>
